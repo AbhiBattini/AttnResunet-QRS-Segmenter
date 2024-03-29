@@ -209,10 +209,9 @@ truth_signals = np.concatenate([np.array(all_true), np.array(all_true)], axis=0)
 X_train, X_val, y_train, y_val = train_test_split(input_signals, truth_signals, test_size=0.1, random_state=42)
 print(X_train.shape)
 model = unet((None, 1))
-WEIGHT_DECAY = 5e-4
 epochs = 20
 steps = 173
-lr_decayed_fn = WarmUpCosine(  # Change with BT_UNET
+lr_decayed_fn = WarmUpCosine( 
     learning_rate_base=6e-3,
     total_steps=epochs * steps,
     warmup_learning_rate=0.0,
