@@ -78,15 +78,3 @@ def accuracy(y_true, y_pred):
     total_samples = tf.cast(tf.size(output_tensor), dtype=tf.float32)
     accuracy = correct_predictions / total_samples
     return accuracy
-
-
-def cosine_similarity(y_true, y_pred):
-    dot_product = tf.tensordot(y_true, y_pred, 1)
-    ground_truth_norm = tf.norm(y_true, axis=1, ord='euclidean')
-    output_norm = tf.norm(y_pred, axis=1, ord='euclidean')
-    cosine_sim = dot_product / (ground_truth_norm * output_norm)
-    return cosine_sim
-
-
-def rmse(y_true, y_pred):
-    return tf.sqrt(tf.reduce_mean(tf.square(y_true - y_pred)))
